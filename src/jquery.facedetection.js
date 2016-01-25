@@ -29,9 +29,9 @@ $.fn.faceDetection = function (settingsOrCallback) {
     return this.each(function() {
         var $$       = $(this),
             offset   = $$.offset(),
-            position = $$.position(),
-            scaleX   = ($$.width()  / (this.naturalWidth  || this.videoWidth )) || 1,
-            scaleY   = ($$.height() / (this.naturalHeight || this.videoHeight)) || 1;
+            position = {top: 0, left: 0},
+            scaleX   = 1,
+            scaleY   = 1;
 
         if (!$$.is('img, video, canvas')) {
             options.error.apply($$, [ 1, 'Face detection is possible on images, videos and canvas only.' ]);

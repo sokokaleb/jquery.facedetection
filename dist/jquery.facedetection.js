@@ -1,6 +1,6 @@
 /*! ----------------------------------------------------------------------------
  *  A jQuery plugin to detect faces on images, videos and canvases.
- *  v2.0.3 released 2016-01-22 11:34
+ *  v2.0.3 released 2016-01-25 17:11
  *  http://facedetection.jaysalvat.com
  *  Copyright (c) 2010-2016, Jay Salvat
  *  http://jaysalvat.com/
@@ -16576,7 +16576,10 @@
                 data.push(faces[i]));
                 data.time = new Date().getTime() - time, options.complete.apply($$, [ data ]);
             }
-            var $$ = $(this), offset = $$.offset(), position = $$.position(), scaleX = $$.width() / (this.naturalWidth || this.videoWidth) || 1, scaleY = $$.height() / (this.naturalHeight || this.videoHeight) || 1;
+            var $$ = $(this), offset = $$.offset(), position = {
+                top: 0,
+                left: 0
+            }, scaleX = 1, scaleY = 1;
             return $$.is("img, video, canvas") ? detect() : (options.error.apply($$, [ 1, "Face detection is possible on images, videos and canvas only." ]), 
             void options.complete.apply($$, [ [] ]));
         });
